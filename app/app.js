@@ -6,7 +6,12 @@ angular.module('myApp', [
 ]).
 controller('MessageController', function($scope, socket, $rootScope) {
 
-    $scope.messages = [];
+    $scope.messages = [
+      {body:"The ferry will be arriving in 5 minutes."},
+      {body:"The deck is now closed"},
+      {body:"The ferry will be departing immediately"}
+    ];
+
     $rootScope.$on('newList', function(event, data) {
       console.log('hell yeah new list');
       $scope.$apply(function () {
@@ -14,10 +19,20 @@ controller('MessageController', function($scope, socket, $rootScope) {
       });
     })
 
-    $scope.send_message = function () {
-      $scope.messages.unshift({body: $scope.new_message, type: 'none'})
-      socket.publish('com.pubsub.ticker.create', [{body:$scope.new_message, type:'none'}]);
+    $scope.add_message = function () {
+      var message_body = {body: $scope.new_message, type: 'none'}
+      $scope.messages.push(message_body);
+      socket.publish('com.pubsub.ticker.create', [message_body]);
+      $scope.current_message = $scope.new_message;
       $scope.new_message = '';
+    }
+
+    $scope.show_message = function(text) {
+      $scope.current_message = text.body;
+    }
+
+    $scope.clear_message = function() {
+      $scope.current_message = '';
     }
 
 }).

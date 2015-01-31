@@ -9,8 +9,9 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">-->
+  <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">-->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
@@ -20,32 +21,80 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
-
-  <h1>Messaging</h1>
-
   <div ng-controller="MessageController">
-    <textarea rows="4" cols="50" ng-model="new_message">
-    </textarea>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-xs-offset-3 col-sm-offset-3">
+          <h1 class="text-center">Vessel Alerts</h1>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-xs-offset-3 col-sm-offset-3 text-center">
+          <i>Current Message</i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2 col-sm-2"></div>
+        <div class="col-xs-8 col-sm-8">
+          <div>
+            <textarea class="form-control" rows="4" cols="50" ng-model="current_message"></textarea>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div ng-repeat="message in messages">
+            <br>
+            <button class="btn btn-primary big-text btn-block" ng-click="show_message(message)">{{message.body}}</button>
+            <br>
+          </div>
 
-    <ul>
-      <li ng-repeat="message in messages">{{message.body}}</li>
-    </ul>
+          <!--<br>-->
+          <!--<br>-->
+          <!--<input type="text" ng-model="new_message">-->
 
-
-    <button type="button" ng-click="send_message()">Send Message</button>
-
+          <!--<button type="button" ng-click="add_message()" class="btn btn-default" aria-label="Left Align">-->
+            <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>-->
+          <!--</button>-->
+        </div>
+        <div class="col-xs-2 col-sm-2">
+          <table>
+            <!--<tr>-->
+              <!--<td>-->
+                <!--<button type="button" ng-click="clear_message()" class="btn btn-success btn-lg" aria-label="Left Align">-->
+                  <!--<span class="glyphicon glyphicon-play" aria-hidden="true"></span>-->
+                <!--</button>-->
+              <!--</td>-->
+            <!--</tr>-->
+            <tr>
+              <td>
+                <br>
+                <button type="button" ng-click="clear_message()" class="btn btn-danger btn-lg" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="marquee bottom">
+      <div class="marquee-text">
+        {{current_message}}
+      </div>
+    </div>
   </div>
-
-
-
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/autobahn/autobahn.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
+  <script src="jquery-stuff.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
