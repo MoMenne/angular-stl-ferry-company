@@ -25,7 +25,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-xs-offset-3 col-sm-offset-3">
-          <h1 class="text-center">Vessel Alerts</h1>
+          <img src="essav-vessel-alert.png"/>
+          <!--<h1 class="text-center">Vessel Alerts</h1>-->
         </div>
       </div>
       <br>
@@ -46,7 +47,7 @@
           <br>
           <div ng-repeat="message in messages">
             <br>
-            <button class="btn btn-primary big-text btn-block" ng-click="show_message(message)">{{message.body}}</button>
+            <button class="btn btn-primary big-text btn-block text-button" ng-click="show_message(message)">{{message.body}}</button>
             <br>
           </div>
 

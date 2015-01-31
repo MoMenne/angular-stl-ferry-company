@@ -7,9 +7,9 @@ angular.module('myApp', [
 controller('MessageController', function($scope, socket, $rootScope) {
 
     $scope.messages = [
-      {body:"The ferry will be arriving in 5 minutes."},
-      {body:"The deck is now closed"},
-      {body:"The ferry will be departing immediately"}
+      {id: 1, body:"The ferry will be arriving in 5 minutes."},
+      {id: 2, body:"The deck is now closed"},
+      {id: 3, body:"The ferry will be departing immediately"}
     ];
 
     $rootScope.$on('newList', function(event, data) {

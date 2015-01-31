@@ -59,3 +59,12 @@ textarea {
 
     width: 100%;
 }
+
+.text-button {
+    color: #fff;
+    background-color: #4988C7;
+    border-color: #204d74;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
